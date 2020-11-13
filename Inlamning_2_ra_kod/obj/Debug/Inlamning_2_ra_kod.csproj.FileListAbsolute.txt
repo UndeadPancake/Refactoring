@@ -1,0 +1,7 @@
+C:\Users\Dator 1\Source\Repos\Inlamning_2_ra_kod\bin\Debug\Inlamning_2_ra_kod.exe.config
+C:\Users\Dator 1\Source\Repos\Inlamning_2_ra_kod\bin\Debug\Inlamning_2_ra_kod.exe
+C:\Users\Dator 1\Source\Repos\Inlamning_2_ra_kod\bin\Debug\Inlamning_2_ra_kod.pdb
+C:\Users\Dator 1\Source\Repos\Inlamning_2_ra_kod\obj\Debug\Inlamning_2_ra_kod.csprojAssemblyReference.cache
+C:\Users\Dator 1\Source\Repos\Inlamning_2_ra_kod\obj\Debug\Inlamning_2_ra_kod.csproj.CoreCompileInputs.cache
+C:\Users\Dator 1\Source\Repos\Inlamning_2_ra_kod\obj\Debug\Inlamning_2_ra_kod.exe
+C:\Users\Dator 1\Source\Repos\Inlamning_2_ra_kod\obj\Debug\Inlamning_2_ra_kod.pdb
