@@ -36,15 +36,7 @@ namespace Inlamning_2_ra_kod
                 else if (command == "ny")
                 {
                     Console.WriteLine("Lägger till ny person");
-                    Console.Write("  1. ange namn:    ");
-                    string name = Console.ReadLine();
-                    Console.Write("  2. ange adress:  ");
-                    string adress = Console.ReadLine();
-                    Console.Write("  3. ange telefon: ");
-                    string phone = Console.ReadLine();
-                    Console.Write("  4. ange email:   ");
-                    string email = Console.ReadLine();
-                    Dict.Add(new Person(name, adress, phone, email));
+                    Dict.Add(AddPerson());
                 }
                 else if (command == "ta bort")
                 {
@@ -124,6 +116,19 @@ namespace Inlamning_2_ra_kod
             }
             Console.WriteLine("klart!");
             return Dict;
+        }
+        static Person AddPerson()
+        {
+            Console.Write("  1. ange namn:    ");
+            string name = Console.ReadLine();
+            Console.Write("  2. ange adress:  ");
+            string adress = Console.ReadLine();
+            Console.Write("  3. ange telefon: ");
+            string phone = Console.ReadLine();
+            Console.Write("  4. ange email:   ");
+            string email = Console.ReadLine();
+            Person returnValue = new Person(name, adress, phone, email);
+            return returnValue;
         }
     }
 }
