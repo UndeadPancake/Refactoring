@@ -40,21 +40,12 @@ namespace Inlamning_2_ra_kod
                 }
                 else if (command == "ta bort")
                 {
-                    Console.Write("Vem vill du ta bort (ange namn): ");
-                    string toBeRemoved = Console.ReadLine();
-                    int found = -1;
-                    for (int i = 0; i < Dict.Count(); i++)
-                    {
-                        if (Dict[i].name == toBeRemoved) found = i;
-                    }
+                    int found = IndexFinder(Dict);
                     if (found == -1)
                     {
                         Console.WriteLine("Tyvärr: {0} fanns inte i telefonlistan", toBeRemoved);
                     }
-                    else
-                    {
-                        Dict.RemoveAt(found);
-                    }
+                    Dict.RemoveAt(found);
                 }
                 else if (command == "visa")
                 {
@@ -129,6 +120,17 @@ namespace Inlamning_2_ra_kod
             string email = Console.ReadLine();
             Person returnValue = new Person(name, adress, phone, email);
             return returnValue;
+        }
+        static int IndexFinder(List<Person> Dict)
+        {
+            Console.Write("Vem vill du ta bort (ange namn): ");
+            string toBeRemoved = Console.ReadLine();
+            int found = -1;
+            for (int i = 0; i < Dict.Count(); i++)
+            {
+                if (Dict[i].name == toBeRemoved) found = i;
+            }
+            return found;
         }
     }
 }
