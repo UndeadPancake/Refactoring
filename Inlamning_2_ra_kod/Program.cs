@@ -19,20 +19,8 @@ namespace Inlamning_2_ra_kod
     {
         static void Main(string[] args)
         {
-            List<Person> Dict = new List<Person>();
+            List<Person> Dict = LoadAdressList();
 
-            Console.Write("Laddar adresslistan ... ");
-            using (StreamReader fileStream = new StreamReader(@"..\..\address.lis"))
-            {
-                while (fileStream.Peek() >= 0)
-                {
-                    string line = fileStream.ReadLine();
-                    string[] word = line.Split('#');
-                    Person P = new Person(word[0], word[1], word[2], word[3]);
-                    Dict.Add(P);
-                }
-            }
-            Console.WriteLine("klart!");
 
             Console.WriteLine("Hej och välkommen till adresslistan");
             Console.WriteLine("Skriv 'sluta' för att sluta!");
@@ -118,6 +106,24 @@ namespace Inlamning_2_ra_kod
                     Console.WriteLine("Okänt kommando: {0}", command);
                 }
             } while (command != "sluta");
+        }
+        static List<Person> LoadAdressList()
+        {
+            List<Person> Dict = new List<Person>();
+
+            Console.Write("Laddar adresslistan ... ");
+            using (StreamReader fileStream = new StreamReader(@"..\..\address.lis"))
+            {
+                while (fileStream.Peek() >= 0)
+                {
+                    string line = fileStream.ReadLine();
+                    string[] word = line.Split('#');
+                    Person P = new Person(word[0], word[1], word[2], word[3]);
+                    Dict.Add(P);
+                }
+            }
+            Console.WriteLine("klart!");
+            return Dict;
         }
     }
 }
