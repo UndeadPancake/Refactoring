@@ -40,7 +40,9 @@ namespace Inlamning_2_ra_kod
                 }
                 else if (command == "ta bort")
                 {
-                    int found = IndexFinder(Dict);
+                    Console.Write("Vem vill du ta bort (ange namn): ");
+                    string toBeRemoved = Console.ReadLine();
+                    int found = IndexFinder(Dict, toBeRemoved);
                     if (found == -1)
                     {
                         Console.WriteLine("Tyvärr: {0} fanns inte i telefonlistan", toBeRemoved);
@@ -59,29 +61,14 @@ namespace Inlamning_2_ra_kod
                 {
                     Console.Write("Vem vill du ändra (ange namn): ");
                     string personChange = Console.ReadLine();
-                    int found = -1;
-                    for (int i = 0; i < Dict.Count(); i++)
-                    {
-                        if (Dict[i].name == personChange) found = i;
-                    }
+                    int found = IndexFinder(Dict, personChange);
                     if (found == -1)
                     {
                         Console.WriteLine("Tyvärr: {0} fanns inte i telefonlistan", personChange);
                     }
                     else
                     {
-                        Console.Write("Vad vill du ändra (namn, adress, telefon eller email): ");
-                        string elementToChange = Console.ReadLine();
-                        Console.Write("Vad vill du ändra {0} på {1} till: ", elementToChange, personChange);
-                        string newValue = Console.ReadLine();
-                        switch (elementToChange)
-                        {
-                            case "namn": Dict[found].name = newValue; break;
-                            case "adress": Dict[found].adress = newValue; break;
-                            case "telefon": Dict[found].phone = newValue; break;
-                            case "email": Dict[found].email = newValue; break;
-                            default: break;
-                        }
+                        Dict[found] = PersonChanger(Dict[found], personChange);
                     }
                 }
                 else
@@ -121,16 +108,30 @@ namespace Inlamning_2_ra_kod
             Person returnValue = new Person(name, adress, phone, email);
             return returnValue;
         }
-        static int IndexFinder(List<Person> Dict)
+        static int IndexFinder(List<Person> Dict, string toBeFound)
         {
-            Console.Write("Vem vill du ta bort (ange namn): ");
-            string toBeRemoved = Console.ReadLine();
             int found = -1;
             for (int i = 0; i < Dict.Count(); i++)
             {
-                if (Dict[i].name == toBeRemoved) found = i;
+                if (Dict[i].name == toBeFound) found = i;
             }
             return found;
+        }
+        static Person PersonChanger(Person person, string personChange)
+        {
+            Console.Write("Vad vill du ändra (namn, adress, telefon eller email): ");
+            string elementToChange = Console.ReadLine();
+            Console.Write("Vad vill du ändra {0} på {1} till: ", elementToChange, personChange);
+            string newValue = Console.ReadLine();
+            switch (elementToChange)
+            {
+                case "namn": person.name = newValue; break;
+                case "adress": person.adress = newValue; break;
+                case "telefon": person.phone = newValue; break;
+                case "email": person.email = newValue; break;
+                default: break;
+            }
+            return person;
         }
     }
 }
