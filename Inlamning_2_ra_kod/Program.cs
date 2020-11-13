@@ -68,7 +68,7 @@ namespace Inlamning_2_ra_kod
                     }
                     else
                     {
-                        Dict[found] = PersonChanger(Dict[found], personChange);
+                        Dict[found] = PersonChanger(Dict[found]);
                     }
                 }
                 else
@@ -77,6 +77,11 @@ namespace Inlamning_2_ra_kod
                 }
             } while (command != "sluta");
         }
+        /* METHOD: LoadAdressList (static)
+         * PURPOSE: This method loads the file that is used to get four people into the list to start
+         * PARAMETERS: No parameters
+         * RETURN VALUE: The return value is a list which is copied to a list that exists in Main. It's used to keep track of people.
+         */
         static List<Person> LoadAdressList()
         {
             List<Person> Dict = new List<Person>();
@@ -95,6 +100,11 @@ namespace Inlamning_2_ra_kod
             Console.WriteLine("klart!");
             return Dict;
         }
+        /* METHOD: AddPerson()
+         * PURPOSE: This method adds a user inputed person into the list.
+         * PARAMETERS: No parameters
+         * RETURN VALUE: The return value is a single instance of the class Person that can be added to the list.
+         */
         static Person AddPerson()
         {
             Console.Write("  1. ange namn:    ");
@@ -108,6 +118,13 @@ namespace Inlamning_2_ra_kod
             Person returnValue = new Person(name, adress, phone, email);
             return returnValue;
         }
+        /* METHOD: IndexFinder()
+         * PURPOSE: This method finds the specific index that the user wants based on what name they input
+         * PARAMETERS: List<Person> Dict: This parameter is the list of people,-- 
+         * --which we use to compare the names of the people in the list to what the user put in.
+         * string toBeFound: This string is the name that the user put in. It's used as described in List<Person> Dict.
+         * RETURN VALUE: The return value is the integer that is the index that the user wants to change
+         */
         static int IndexFinder(List<Person> Dict, string toBeFound)
         {
             int found = -1;
@@ -117,11 +134,16 @@ namespace Inlamning_2_ra_kod
             }
             return found;
         }
-        static Person PersonChanger(Person person, string personChange)
+        /* METHOD: PersonChanger()
+         * PURPOSE: This method changes one value about a stored person in the list.
+         * PARAMETERS: Person person: This is the instance of the person that the user wants to change something about. It's edited, then returned.
+         * RETURN VALUE: This is the updated person. The previous values of the person are overwritten.
+         */
+        static Person PersonChanger(Person person)
         {
             Console.Write("Vad vill du ändra (namn, adress, telefon eller email): ");
             string elementToChange = Console.ReadLine();
-            Console.Write("Vad vill du ändra {0} på {1} till: ", elementToChange, personChange);
+            Console.Write("Vad vill du ändra det till: ");
             string newValue = Console.ReadLine();
             switch (elementToChange)
             {
