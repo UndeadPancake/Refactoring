@@ -19,12 +19,17 @@ namespace Inlamning_2_ra_kod
     {
         static void Main(string[] args)
         {
+            //Declarations
+            string toBeFound;
+            int found;
             List<Person> Dict = LoadAdressList();
 
-
+            //Welcome message
             Console.WriteLine("Hej och välkommen till adresslistan");
             Console.WriteLine("Skriv 'sluta' för att sluta!");
             string command;
+
+            //Main code block
             do
             {
                 Console.Write("> ");
@@ -41,11 +46,11 @@ namespace Inlamning_2_ra_kod
                 else if (command == "ta bort")
                 {
                     Console.Write("Vem vill du ta bort (ange namn): ");
-                    string toBeRemoved = Console.ReadLine();
-                    int found = IndexFinder(Dict, toBeRemoved);
+                    toBeFound = Console.ReadLine();
+                    found = IndexFinder(Dict, toBeFound);
                     if (found == -1)
                     {
-                        Console.WriteLine("Tyvärr: {0} fanns inte i telefonlistan", toBeRemoved);
+                        Console.WriteLine("Tyvärr: {0} fanns inte i telefonlistan", toBeFound);
                     }
                     Dict.RemoveAt(found);
                 }
@@ -60,11 +65,11 @@ namespace Inlamning_2_ra_kod
                 else if (command == "ändra")
                 {
                     Console.Write("Vem vill du ändra (ange namn): ");
-                    string personChange = Console.ReadLine();
-                    int found = IndexFinder(Dict, personChange);
+                    toBeFound = Console.ReadLine();
+                    found = IndexFinder(Dict, toBeFound);
                     if (found == -1)
                     {
-                        Console.WriteLine("Tyvärr: {0} fanns inte i telefonlistan", personChange);
+                        Console.WriteLine("Tyvärr: {0} fanns inte i telefonlistan", toBeFound);
                     }
                     else
                     {
